@@ -1,0 +1,75 @@
+//Bubba Ayoub
+//AMDG
+//Dice Roll Doubles Game.
+//Originally used for a programming assignment in an Introduction to Programming using C++ class.
+
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <conio.h>
+#include <cmath>
+using namespace std;
+
+int main()
+    {
+            //variable declarations
+            double wager;
+            double bank;
+            int roll1;
+            int roll2;
+
+            //seed random
+            srand(time(0));
+
+            //welcome messages and beginning of the game
+            cout<<"Hello! Despite the warnings of the greatest film of 1983, Wargames, would you like to play a game? I promise not to threaten national security."<<endl;
+            cout << "Press a key to continue...";
+            _getch();
+            system("cls");
+            cout<<"Excellent! Let’s get started. You will be given a starting amount in your bank, which you can then wager on whether or not two dice will roll doubles."<<endl<<endl;
+            cout<<"Ready? Press a key to continue...";
+            _getch();
+            system("cls");
+
+            //get wager and announce how much money is in the account
+            bank = 500.00;
+            cout<<"Your bank has $500.00 dollars in it."<<endl;
+            cout<<"How much would you like to wager?"<<endl;
+            cin>>wager;
+
+            system("cls");
+            cout<<"Your wager is $"<<wager<<endl;
+            cout<<"Press any key to continue"<<endl;
+            _getch();
+            system("cls");
+
+            if (wager<0 || wager>bank)
+                cout<<"Error running program. Your wager cannot be less than zero or more than your starting bank"<<endl;
+            else
+                {
+                    //roll dice
+                    roll1= (rand() % 6) +1;
+                    roll2= (rand() % 6) +1;
+    
+                    //output dice
+                    cout<<"The dice came out "<<roll1<<"and "<<roll2<<endl;
+    
+                    //bank calculations
+                    if (roll1==roll2)
+                        {
+                            bank=bank+wager;
+                            cout<<"Congratulations! You won!"<<endl;
+                            cout<<"Your bank now has $"<<bank<<" in it."<<endl;
+                        }
+                    else
+                        {
+                            bank=bank-wager;
+                            cout<<"Sorry, you lost."<<endl;
+                            cout<<"Your bank now has $"<<bank<<" in it."<<endl;
+                        }
+    
+                }
+
+        return 0;
+    }
